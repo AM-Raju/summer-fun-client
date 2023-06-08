@@ -1,9 +1,10 @@
 import React from "react";
+import SwipperBanner from "../SwiperBanner/SwipperBanner";
 
 const Home = () => {
   return (
     <div>
-      <h3>Home page</h3>
+      <SwipperBanner></SwipperBanner>
     </div>
   );
 };
