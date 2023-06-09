@@ -10,13 +10,13 @@ const Navbar = () => {
         <Link className="bg-[#1A58A3] text-white hidden">Dashboard</Link>
       </li>
       <li>
-        <a>Home</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a>Instructors</a>
+        <Link to="/instructors">Instructors</Link>
       </li>
       <li>
-        <a>Classes</a>
+        <Link to="/classes">Classes</Link>
       </li>
     </>
   );
@@ -39,9 +39,22 @@ const Navbar = () => {
         <img className="w-36" src={logo} alt="" />
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle">
-          <FaUserCircle className="text-3xl"></FaUserCircle>
-        </button>
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost btn-circle">
+            <FaUserCircle className="text-3xl"></FaUserCircle>
+          </label>
+          <ul
+            tabIndex={0}
+            className="menu w-56 p-0 [&_li>*]:rounded-none bg-base-100   dropdown-content mt-3 shadow text-lg"
+          >
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
