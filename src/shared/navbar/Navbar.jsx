@@ -7,7 +7,7 @@ const Navbar = () => {
   const navOption = (
     <>
       <li>
-        <Link className="bg-[#1A58A3] text-white">Dashboard</Link>
+        <Link className="bg-[#1A58A3] text-white hidden">Dashboard</Link>
       </li>
       <li>
         <a>Home</a>
@@ -21,7 +21,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 relative z-10">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost btn-circle">

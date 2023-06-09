@@ -12,23 +12,25 @@ import img5 from "../../../assets/slider/5.jpg";
 
 const SwipperBanner = () => {
   return (
-    <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-      <SwiperSlide>
-        <img src={img1} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={img2} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={img3} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={img4} alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={img5} alt="" />
-      </SwiperSlide>
-    </Swiper>
+    <section>
+      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        <SwiperSlide>
+          <img src={img1} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={img2} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={img3} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={img4} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={img5} alt="" />
+        </SwiperSlide>
+      </Swiper>
+    </section>
   );
 };
 
