@@ -1,17 +1,44 @@
 import React, { useState } from "react";
-import { FaGoogle, FaInstagram, FaPinterest, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../../hook/useAuth";
+import SocialLogin from "../../../shared/socialLogin/SocialLogin";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
+  //state
+  const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
-  const handleGoogleLogin = () => {
-    console.log("Clicked");
+  //React hook form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    signIn(email, password)
+      .then(() => {
+        reset();
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => console.log(error.message));
   };
+
   return (
     <div className=" bg-[#BCEDED] py-20">
       <div className=" p-20 w-[600px] mx-auto border border-[#1A58A3]">
         <h2 className="text-5xl text-center font-semibold mb-10">Login Here</h2>
-        <form className="w-96 mx-auto text-lg">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-96 mx-auto text-lg">
           {/* input block */}
           <div>
             <label htmlFor="">Email</label>
@@ -19,6 +46,7 @@ const Login = () => {
               className="bg-gray-100 w-full px-3 py-3 mt-2 outline-none"
               type="email"
               placeholder="Email"
+              {...register("email")}
             />
           </div>
           {/* input block */}
@@ -28,6 +56,7 @@ const Login = () => {
               className="bg-gray-100 w-full px-3 py-3 mt-2 outline-none"
               type="text"
               placeholder="Password"
+              {...register("password")}
             />
           </div>
           {/* Submit */}
@@ -47,23 +76,7 @@ const Login = () => {
           </p>
         </form>
         {/* Social Login */}
-        <div className="w-96 mx-auto">
-          <div className="divider w-full mt-10">Social Login</div>
-          <div className="flex">
-            <button onClick={handleGoogleLogin} className="w-1/4">
-              <FaGoogle className="text-2xl bg-gray-500 hover:bg-[#4081EC] h-16 w-24 p-5 text-[#4081EC] hover:text-white  border-r-2 hover:border-0"></FaGoogle>
-            </button>
-            <button className="w-1/4">
-              <FaPinterest className="text-2xl bg-gray-500 h-16 w-24 p-5 text-white border-r-2 "></FaPinterest>
-            </button>
-            <button className="w-1/4">
-              <FaTwitter className="text-2xl bg-gray-500 h-16 w-24 p-5 text-white border-r-2"></FaTwitter>
-            </button>
-            <button className="w-1/4">
-              <FaInstagram className="text-2xl bg-gray-500 h-16 w-24 p-5 text-white border-r-2"></FaInstagram>
-            </button>
-          </div>
-        </div>
+        <SocialLogin></SocialLogin>
       </div>
     </div>
   );
