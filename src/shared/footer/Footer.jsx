@@ -1,52 +1,69 @@
 import React from "react";
 
+import logo from "../../assets/Logo.png";
+import { FaFacebook, FaInstagram, FaPinterest, FaTwitter } from "react-icons/fa";
+
 const Footer = () => {
   return (
     <section>
-      <footer className="footer p-10 bg-base-200 text-base-content">
-        <div>
-          <span className="footer-title">Services</span>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+      <footer className=" p-10 bg-[#1A58A3] text-white mt-10">
+        <div className="flex justify-between items-center">
+          {/* Email */}
+          <div>
+            <p className="text-xl">Send Email</p>
+            <p className="text-2xl font-semibold">info@phero.com</p>
+          </div>
+          {/* Logo */}
+          <img className="w-36" src={logo} alt="" />
+          {/* Contact number */}
+          <div>
+            <p className="text-xl">Call Us</p>
+            <p className="text-2xl font-semibold">01720 00 01 02</p>
+          </div>
         </div>
-        <div>
-          <span className="footer-title">Company</span>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
-        </div>
-        <div>
-          <span className="footer-title">Legal</span>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
-        </div>
-      </footer>
-      <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
-        <div className="items-center grid-flow-col">
-          <p>
-            ACME Industries Ltd. <br />
-            Providing reliable tech since 1992
-          </p>
-        </div>
-        <div className="md:place-self-center md:justify-self-end">
-          <div className="grid grid-flow-col gap-4">
-            <a></a>
-            <a></a>
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
-              >
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-              </svg>
-            </a>
+        {/* divider */}
+        <div className="h-[1px] bg-white mt-5 mb-8"></div>
+        {/* Lower footer part*/}
+        <div className="grid grid-cols-5">
+          <div className="col-span-1">
+            <h3 className="footer-title">About Us</h3>
+            <p>
+              Have you road-tripped to all 50 states including Hawaii? Is your boat named after an
+              inside joke that only you understand? If this sounds like you.
+            </p>
+            {/* Social Icon */}
+            <div className="flex gap-5 text-xl mt-5">
+              <FaFacebook></FaFacebook>
+              <FaTwitter></FaTwitter>
+              <FaInstagram></FaInstagram>
+              <FaPinterest></FaPinterest>
+            </div>
+          </div>
+          <div className="flex justify-around col-span-4">
+            <div className="flex flex-col">
+              <span className="footer-title">Services</span>
+              <a className="link link-hover">Branding</a>
+              <a className="link link-hover">Design</a>
+              <a className="link link-hover">Marketing</a>
+              <a className="link link-hover">Advertisement</a>
+            </div>
+            <div className="flex flex-col">
+              <span className="footer-title">Company</span>
+              <a className="link link-hover">About us</a>
+              <a className="link link-hover">Contact</a>
+              <a className="link link-hover">Jobs</a>
+              <a className="link link-hover">Press kit</a>
+            </div>
+            <div className="flex flex-col">
+              <span className="footer-title">Legal</span>
+              <a className="link link-hover">Terms of use</a>
+              <a className="link link-hover">Privacy policy</a>
+              <a className="link link-hover">Cookie policy</a>
+            </div>
+            <div className="flex flex-col">
+              <span className="footer-title">Subscribe</span>
+              <input className="px-5 py-3" type="text" name="" id="" />
+            </div>
           </div>
         </div>
       </footer>
