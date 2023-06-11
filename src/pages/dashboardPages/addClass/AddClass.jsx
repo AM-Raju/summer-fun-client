@@ -23,6 +23,28 @@ const AddClass = () => {
   const onSubmit = (data) => {
     console.log(data, "Data from add a class");
     const { className, imageURL, instructorEmail, instructorName, price, seats } = data;
+    const savedClass = {
+      className,
+      imageURL,
+      instructorEmail,
+      instructorName,
+      price: parseFloat(price),
+      seats: parseFloat(seats),
+      status: "pending",
+    };
+    console.log(savedClass, "Saved Class");
+
+    fetch("http://localhost:5000/classes", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(savedClass),
+    })
+      .then((result) => {
+        if (result.insertedId) {
+          alert("Data uploading done");
+        }
+      })
+      .catch((error) => console.log(error.message));
   };
   return (
     <div>
