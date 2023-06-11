@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   FaGoogle,
   FaInstagram,
@@ -37,6 +38,7 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log(data, "Form data of sign up field");
     const { name, email, password, confirmPassword, photoURL } = data;
+
     setSuccess("");
     setError("");
     createUser(email, password)
@@ -44,6 +46,20 @@ const SignUp = () => {
         const signedUpUser = result.user;
         updateUserProfile(name, photoURL)
           .then(() => {
+            const savedUser = { name: name, email: email };
+            fetch("http://localhost:5000/students", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify(savedUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  console.log("Student inserted successfully");
+                } else {
+                  console.log(data);
+                }
+              });
             Swal.fire({
               icon: "success",
               title: "Sign Up and Profile Update Done!",
@@ -94,8 +110,17 @@ const SignUp = () => {
               className="bg-gray-100 w-full px-3 py-3 mt-2 outline-none"
               type={show ? "text" : "password"}
               placeholder="Password"
-              {...register("password")}
+              {...register("password", {
+                pattern: /^(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/i,
+              })}
             />
+            {errors.password?.type === "pattern" && (
+              <p role="alert">
+                <small className="text-red-500">
+                  * Minimum 6 characters <br />* One capital letter <br />* One special character{" "}
+                </small>
+              </p>
+            )}
             {/* eye icon condition */}
             <div className="absolute right-5 top-14">
               {show ? (
@@ -124,8 +149,18 @@ const SignUp = () => {
               className="bg-gray-100 w-full px-3 py-3 mt-2 outline-none"
               type={showConfirmPass ? "text" : "password"}
               placeholder="Password"
-              {...register("confirmPassword")}
+              {...register("confirmPassword", {
+                pattern: /^(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/i,
+              })}
             />
+            {errors.confirmPassword?.type === "pattern" && (
+              <p role="alert">
+                <small className="text-red-500">
+                  * Minimum 6 characters <br />* One capital letter <br />* One special character{" "}
+                </small>
+              </p>
+            )}
+
             {/* eye icon condition */}
             <div className="absolute right-5 top-14">
               {showConfirmPass ? (
@@ -159,7 +194,8 @@ const SignUp = () => {
           </div>
           {/* Submit */}
           <input
-            className="bg-[#FCE07A] hover:bg-[#fcc708]  w-full py-3 mt-5"
+            className={`bg-[#FCE07A]   w-full py-3 mt-5 hover:bg-[#fcc708] 
+            }`}
             type="submit"
             value="Sign Up"
           />

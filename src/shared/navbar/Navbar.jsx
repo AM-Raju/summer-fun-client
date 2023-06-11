@@ -11,7 +11,9 @@ const Navbar = () => {
   const navOption = (
     <>
       <li>
-        <Link className="bg-[#1A58A3] text-white hidden">Dashboard</Link>
+        <Link to="/dashboard" className="bg-[#1A58A3] text-white">
+          Dashboard
+        </Link>
       </li>
       <li>
         <Link to="/">Home</Link>
@@ -76,7 +78,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
-            {user && !loading ? (
+            {user ? (
               <img
                 className="w-10 h-10 rounded-full"
                 src={user.photoURL}

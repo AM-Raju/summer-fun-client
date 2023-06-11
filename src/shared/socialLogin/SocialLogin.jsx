@@ -14,6 +14,23 @@ const SocialLogin = () => {
     googleLogin()
       .then((result) => {
         const loggedUser = result.user;
+
+        const savedUser = { name: loggedUser.displayName, email: loggedUser.email };
+
+        fetch("http://localhost:5000/students", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(savedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              console.log("User updated successfully");
+            } else {
+              console.log(data);
+            }
+          });
+
         Swal.fire({
           position: "top-end",
           icon: "success",
