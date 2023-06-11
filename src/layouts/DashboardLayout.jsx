@@ -4,9 +4,16 @@ import { Link, Outlet } from "react-router-dom";
 const DashboardLayout = () => {
   const dashboardOption = (
     <>
+      {/* Admin Menu */}
+      <div className="divider">Admin</div>
       <li>
         <Link to="/dashboard/allStudents">Manage Students</Link>
       </li>
+      <li>
+        <Link to="/dashboard/allClasses">Manage Class</Link>
+      </li>
+      {/* Instructor Menu */}
+      <div className="divider">Instructor</div>
       <li>
         <Link to="/dashboard/addClass">Add a Class</Link>
       </li>

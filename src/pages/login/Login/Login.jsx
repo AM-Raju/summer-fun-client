@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../hook/useAuth";
 import SocialLogin from "../../../shared/socialLogin/SocialLogin";
@@ -12,6 +12,8 @@ const Login = () => {
   //state
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  // State for show and hide password
+  const [show, setShow] = useState(false);
   //React hook form
   const {
     register,
@@ -50,14 +52,33 @@ const Login = () => {
             />
           </div>
           {/* input block */}
-          <div className="mt-5">
+          <div className="mt-5 relative">
             <label htmlFor="">Password</label>
             <input
               className="bg-gray-100 w-full px-3 py-3 mt-2 outline-none"
-              type="text"
+              type={show ? "text" : "password"}
               placeholder="Password"
               {...register("password")}
             />
+            <div className="absolute right-5 top-14">
+              {show ? (
+                <p>
+                  <FaRegEyeSlash
+                    onClick={() => {
+                      setShow(!show);
+                    }}
+                  ></FaRegEyeSlash>
+                </p>
+              ) : (
+                <p>
+                  <FaRegEye
+                    onClick={() => {
+                      setShow(!show);
+                    }}
+                  ></FaRegEye>
+                </p>
+              )}
+            </div>
           </div>
           {/* Submit */}
           <button className="bg-[#FCE07A] w-full py-3 mt-5">

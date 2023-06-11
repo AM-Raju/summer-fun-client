@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hook/useAuth";
 
 const AddClass = () => {
-  const { student } = useAuth();
+  const { user } = useAuth();
 
   //React hook form
   const {
@@ -16,8 +16,8 @@ const AddClass = () => {
   // Setting default value on react hook form
   useEffect(() => {
     let defaultValues = {};
-    defaultValues.instructorName = student?.displayName;
-    defaultValues.instructorEmail = student?.email;
+    defaultValues.instructorName = user?.displayName;
+    defaultValues.instructorEmail = user?.email;
     reset({ ...defaultValues });
   }, []);
   const onSubmit = (data) => {
@@ -39,9 +39,11 @@ const AddClass = () => {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(savedClass),
     })
-      .then((result) => {
-        if (result.insertedId) {
-          alert("Data uploading done");
+      .then((res) => res.json())
+      .then((data) => {
+        reset();
+        if (data.insertedId) {
+          alert("Data inserted successfully");
         }
       })
       .catch((error) => console.log(error.message));
@@ -130,7 +132,7 @@ const AddClass = () => {
           <input
             type="submit"
             value="Add A Class"
-            className="bg-[#FCE07A] hover:bg-[#fcc708] w-full font-semibold py-3 mt-5"
+            className="bg-[#FCE07A] hover:bg-[#fcc708] cursor-pointer w-full font-semibold py-3 mt-5"
           />
         </div>
       </form>
