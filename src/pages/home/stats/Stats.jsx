@@ -11,7 +11,7 @@ import bg from "../../../assets/bg-section.jpg";
 const Stats = () => {
   return (
     <div className="h-96 " style={{ backgroundImage: `url(${bg})` }}>
-      <div className="flex flex-wrap lg:flex-nowrap justify-between items-center h-full bg-black bg-opacity-50">
+      <div className="flex flex-wrap lg:flex-nowrap justify-between items-center h-full bg-black bg-opacity-60">
         {/* Block */}
         <div className="text-center w-96 text-white">
           <div className="w-20 mx-auto">
