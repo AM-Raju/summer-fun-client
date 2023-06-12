@@ -11,7 +11,7 @@ const Navbar = () => {
   const navOption = (
     <>
       <li>
-        <Link to="/dashboard" className="bg-[#1A58A3] text-white">
+        <Link to="/dashboard" className={`bg-[#1A58A3] text-white ${user ? "" : "hidden"}`}>
           Dashboard
         </Link>
       </li>

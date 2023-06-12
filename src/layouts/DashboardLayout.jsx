@@ -2,8 +2,10 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hook/useAdmin";
 import useInstructor from "../hook/useInstructor";
+import useAuth from "../hook/useAuth";
 
 const DashboardLayout = () => {
+  const { user } = useAuth();
   const [isAdmin, isAdminLoading] = useAdmin();
   const [isInstructor, isInstructorLoading] = useInstructor();
 
@@ -11,31 +13,43 @@ const DashboardLayout = () => {
   const dashboardOption = (
     <>
       {/* Admin Menu */}
-      <div className="divider">Admin</div>
-      <li>
-        <Link to="/dashboard/allStudents">Manage Students</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/allClasses">Manage Class</Link>
-      </li>
+      {isAdmin && (
+        <>
+          <div className="divider">Admin</div>
+          <li>
+            <Link to="/dashboard/allStudents">Manage Students</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/allClasses">Manage Class</Link>
+          </li>
+        </>
+      )}
       {/* Instructor Menu */}
-      <div className="divider">Instructor</div>
-      <li>
-        <Link to="/dashboard/addClass">Add a Class</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/myClasses">My Classes</Link>
-      </li>
+      {isInstructor && (
+        <>
+          <div className="divider">Instructor</div>
+          <li>
+            <Link to="/dashboard/addClass">Add a Class</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/myClasses">My Classes</Link>
+          </li>
+        </>
+      )}
       {/* Student Menu */}
-      <div className="divider">Student</div>
-      <li>
-        <Link to="/dashboard/addClass">Selected Classes</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/myClasses">Enrolled Classes</Link>
-      </li>
-      <div className="divider">Main Menu</div>
+      {user && !isAdmin && !isInstructor && (
+        <>
+          <div className="divider">Student</div>
+          <li>
+            <Link to="/dashboard/addClass">Selected Classes</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/myClasses">Enrolled Classes</Link>
+          </li>
+        </>
+      )}
       {/* Main menu */}
+      <div className="divider">Main Menu</div>
       <li>
         <Link to="/">Home</Link>
       </li>
