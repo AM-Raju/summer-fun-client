@@ -6,7 +6,7 @@ import { FaFacebook, FaInstagram, FaPinterest, FaTwitter } from "react-icons/fa"
 const Footer = () => {
   return (
     <section>
-      <footer className=" p-10 bg-[#1A58A3] text-white mt-10">
+      <footer className=" p-10 bg-[#1A58A3] text-white">
         <div className="flex justify-between items-center">
           {/* Email */}
           <div>

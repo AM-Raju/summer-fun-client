@@ -10,11 +10,13 @@ import AddClass from "../pages/dashboardPages/addClass/AddClass";
 import AllStudents from "../pages/dashboardPages/allStudents/AllStudents";
 import MyClasses from "../pages/dashboardPages/myClasses/MyClasses";
 import AllClasses from "../pages/dashboardPages/allClasses/AllClasses";
+import Error404 from "../pages/404/Error404";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <Error404></Error404>,
     children: [
       {
         path: "/",
@@ -43,6 +45,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout></DashboardLayout>,
+    errorElement: <Error404></Error404>,
     children: [
       {
         path: "allStudents",
