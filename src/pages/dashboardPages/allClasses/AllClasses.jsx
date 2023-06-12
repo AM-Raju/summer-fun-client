@@ -11,36 +11,53 @@ const AllClasses = () => {
   return (
     <div>
       <h3 className="text-center uppercase text-3xl font-semibold my-10">All Classes</h3>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto w-10/12 mx-auto">
         <table className="table">
           {/* head */}
           <thead>
             <tr>
               <th>#</th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Image</th>
+              <th>Class Name</th>
+              <th>Instructor Name</th>
+              <th>Instructor Email</th>
+              <th>Available Seats</th>
+              <th>Enrolled Seats</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Action</th>
+              <th>Action</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
+            {games.map((game, index) => (
+              <tr key={game._id}>
+                <td>{index + 1}</td>
+                <td>
+                  <div className=" rounded w-16 h-16">
+                    <img src={game?.imageURL} alt="" />
+                  </div>
+                </td>
+                <td>{game?.className}</td>
+                <td>{game?.instructorName}</td>
+                <td>{game?.instructorEmail}</td>
+                <td>{game?.price}</td>
+                <td>{game?.seats}</td>
+                <td>{game?.enrolled}</td>
+                <td>{game?.status}</td>
+                <td>
+                  <button className="px-5 py-3 bg-[#FCE07A]">Approve</button>
+                </td>
+                <td>
+                  <button className="px-5 py-3 bg-[#FCE07A]">Deny</button>
+                </td>
+                <td>
+                  <button className="px-5 py-3 bg-[#FCE07A]">Feedback</button>
+                </td>
+              </tr>
+            ))}
             {/* row */}
-            <tr>
-              <td>01</td>
-              <td>
-                <div className=" rounded w-12 h-12">
-                  <img
-                    src="/tailwind-css-component-profile-2@56w.png"
-                    alt="Avatar Tailwind CSS Component"
-                  />
-                </div>
-              </td>
-              <td>Zemlak, Daniel and Leannon</td>
-              <td>Seats</td>
-              <td>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>

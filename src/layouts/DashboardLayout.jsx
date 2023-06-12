@@ -1,7 +1,13 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import useAdmin from "../hook/useAdmin";
+import useInstructor from "../hook/useInstructor";
 
 const DashboardLayout = () => {
+  const [isAdmin, isAdminLoading] = useAdmin();
+  const [isInstructor, isInstructorLoading] = useInstructor();
+
+  console.log(isAdmin, isInstructor, "Is Admin");
   const dashboardOption = (
     <>
       {/* Admin Menu */}
@@ -19,6 +25,14 @@ const DashboardLayout = () => {
       </li>
       <li>
         <Link to="/dashboard/myClasses">My Classes</Link>
+      </li>
+      {/* Student Menu */}
+      <div className="divider">Student</div>
+      <li>
+        <Link to="/dashboard/addClass">Selected Classes</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/myClasses">Enrolled Classes</Link>
       </li>
       <div className="divider">Main Menu</div>
       {/* Main menu */}

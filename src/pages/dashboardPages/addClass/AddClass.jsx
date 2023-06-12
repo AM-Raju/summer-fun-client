@@ -49,7 +49,7 @@ const AddClass = () => {
       .catch((error) => console.log(error.message));
   };
   return (
-    <div>
+    <div className="mt-44">
       <h3 className="text-center uppercase text-3xl font-semibold my-10">Add a Class</h3>
       <form
         onSubmit={handleSubmit(onSubmit)}
