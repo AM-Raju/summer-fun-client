@@ -7,11 +7,7 @@ import useStudent from "../hook/useStudent";
 
 const DashboardLayout = () => {
   const { user } = useAuth();
-  const [isAdmin, isAdminLoading] = useAdmin();
-  const [isInstructor, isInstructorLoading] = useInstructor();
-  const [isStudent, isStudentLoading] = useStudent();
 
-  console.log(isAdmin, isInstructor, "Is Admin");
   const dashboardOption = (
     <>
       {/* Admin Menu */}
@@ -50,10 +46,10 @@ const DashboardLayout = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link>Instructors</Link>
+        <Link to="/instructors">Instructors</Link>
       </li>
       <li>
-        <Link>Classes</Link>
+        <Link to="/classes">Classes</Link>
       </li>
     </>
   );

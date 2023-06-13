@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-
-import img from "../../../assets/trainer1.jpg";
+import { Link } from "react-router-dom";
 
 const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
@@ -11,8 +10,8 @@ const PopularInstructors = () => {
       .catch((error) => error.message);
   }, []);
   return (
-    <div className="mb-16">
-      <h2 className="text-5xl font-semibold text-center my-10">Popular Instructors</h2>
+    <div className="mb-32 mt-32">
+      <h2 className="text-5xl font-semibold text-center mb-16">Popular Instructors</h2>
       <div className="grid grid-cols-6 gap-5">
         {/* block */}
         {instructors.map((instructor) => (
@@ -24,6 +23,13 @@ const PopularInstructors = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="w-52 mx-auto mt-8">
+        <Link to="/instructors">
+          <button className="bg-[#FCE07A]   w-full py-3 mt-5 hover:bg-[#fcc708] text-lg font-semibold">
+            See All
+          </button>
+        </Link>
       </div>
     </div>
   );

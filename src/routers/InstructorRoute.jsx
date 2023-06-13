@@ -7,14 +7,14 @@ import useAdmin from "../hook/useAdmin";
 const InstructorRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const [isAdmin, isAdminLoading] = useAdmin();
-  const [isInstructor, isInstructorLoading] = useInstructor();
+  const [instructor, instructorLoading] = useInstructor();
   const location = useLocation();
 
-  if (loading || isInstructorLoading) {
+  if (loading || instructorLoading) {
     return <progress className="progress w-56 relative top-1/2 left-1/2"></progress>;
   }
 
-  if (user && isInstructor) {
+  if (user && instructor) {
     return children;
   }
   return <Navigate to="/" state={{ from: location }} replace></Navigate>;

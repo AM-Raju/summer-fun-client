@@ -45,8 +45,8 @@ const AllClasses = () => {
   };
 
   return (
-    <div>
-      <h3 className="text-center uppercase text-3xl font-semibold my-10">All Classes</h3>
+    <div className="h-full bg-purple-200">
+      <h3 className="text-center uppercase text-5xl font-semibold my-10">All Classes</h3>
       <div className="overflow-x-auto w-10/12 mx-auto">
         <table className="table">
           {/* head */}

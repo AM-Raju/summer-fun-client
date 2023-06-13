@@ -61,8 +61,8 @@ const AllStudents = () => {
   };
 
   return (
-    <div>
-      <h3 className="text-center uppercase text-3xl font-semibold my-10">All Students</h3>
+    <div className="h-screen bg-purple-200">
+      <h3 className="text-center uppercase text-5xl font-semibold my-10">All Students</h3>
 
       <div className="overflow-x-auto">
         <table className="table w-8/12 mx-auto">
