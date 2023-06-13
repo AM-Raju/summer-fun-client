@@ -51,35 +51,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "allStudents",
-        element: (
-          <AdminRoute>
-            <AllStudents></AllStudents>
-          </AdminRoute>
-        ),
+        element: <AllStudents></AllStudents>,
       },
       {
         path: "allClasses",
-        element: (
-          <AdminRoute>
-            <AllClasses></AllClasses>
-          </AdminRoute>
-        ),
+        element: <AllClasses></AllClasses>,
       },
       {
         path: "addClass",
-        element: (
-          <InstructorRoute>
-            <AddClass></AddClass>
-          </InstructorRoute>
-        ),
+        element: <AddClass></AddClass>,
       },
       {
         path: "myClasses",
-        element: (
-          <InstructorRoute>
-            <MyClasses></MyClasses>
-          </InstructorRoute>
-        ),
+        element: <MyClasses></MyClasses>,
       },
     ],
   },
