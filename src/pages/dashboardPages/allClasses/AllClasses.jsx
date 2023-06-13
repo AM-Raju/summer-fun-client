@@ -47,13 +47,13 @@ const AllClasses = () => {
                 <td>{game?.enrolled}</td>
                 <td>{game?.status}</td>
                 <td>
-                  <button className="px-5 py-3 bg-[#FCE07A]">Approve</button>
+                  <button className="px-5 py-3 bg-[#FCE07A] hover:bg-[#ebba08]">Approve</button>
                 </td>
                 <td>
-                  <button className="px-5 py-3 bg-[#FCE07A]">Deny</button>
+                  <button className="px-5 py-3 bg-[#FCE07A] hover:bg-[#ebba08]">Deny</button>
                 </td>
                 <td>
-                  <button className="px-5 py-3 bg-[#FCE07A]">Feedback</button>
+                  <button className="px-5 py-3 bg-[#FCE07A] hover:bg-[#ebba08]">Feedback</button>
                 </td>
               </tr>
             ))}

@@ -1,18 +1,65 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const AllStudents = () => {
-  const [students, setStudent] = useState([]);
-  useEffect(() => {
+  //   const [students, setStudent] = useState([]);
+  /*   useEffect(() => {
     fetch("http://localhost:5000/students")
       .then((res) => res.json())
       .then((data) => setStudent(data))
       .catch((error) => console.log(error.message));
-  }, []);
+  }, []); */
 
-  const handleRole = () => {
-    console.log("Role Changed");
+  const { data: students = [], refetch } = useQuery({
+    queryKey: ["students"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/students");
+      return res.json();
+    },
+  });
+
+  const handleMakeAdmin = (student) => {
+    fetch(`http://localhost:5000/students/admin/${student?._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${student?.name} is now Admin!`,
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        }
+      })
+      .catch((error) => console.log(error.message));
   };
+
+  const handleMakeInstructor = (student) => {
+    fetch(`http://localhost:5000/students/instructor/${student?._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${student?.name} is now Instructor!`,
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        }
+      })
+      .catch((error) => console.log(error.message));
+  };
+
   return (
     <div>
       <h3 className="text-center uppercase text-3xl font-semibold my-10">All Students</h3>
@@ -40,7 +87,9 @@ const AllStudents = () => {
                 <td>{student?.role}</td>
                 <td>
                   <button
-                    onClick={handleRole}
+                    onClick={() => {
+                      handleMakeAdmin(student);
+                    }}
                     className={` px-5 py-3 ${
                       student?.role === "admin" ? "bg-gray-500" : "bg-[#FCE07A] hover:bg-[#f8cf3b]"
                     }`}
@@ -51,6 +100,9 @@ const AllStudents = () => {
                 </td>
                 <td>
                   <button
+                    onClick={() => {
+                      handleMakeInstructor(student);
+                    }}
                     className={` px-5 py-3 ${
                       student?.role === "admin" ? "bg-gray-500" : "bg-[#FCE07A] hover:bg-[#f8cf3b]"
                     }`}

@@ -11,6 +11,8 @@ import AllStudents from "../pages/dashboardPages/allStudents/AllStudents";
 import MyClasses from "../pages/dashboardPages/myClasses/MyClasses";
 import AllClasses from "../pages/dashboardPages/allClasses/AllClasses";
 import Error404 from "../pages/404/Error404";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 
 const router = createBrowserRouter([
   {
@@ -49,19 +51,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "allStudents",
-        element: <AllStudents></AllStudents>,
+        element: (
+          <AdminRoute>
+            <AllStudents></AllStudents>
+          </AdminRoute>
+        ),
       },
       {
         path: "allClasses",
-        element: <AllClasses></AllClasses>,
+        element: (
+          <AdminRoute>
+            <AllClasses></AllClasses>
+          </AdminRoute>
+        ),
       },
       {
         path: "addClass",
-        element: <AddClass></AddClass>,
+        element: (
+          <InstructorRoute>
+            <AddClass></AddClass>
+          </InstructorRoute>
+        ),
       },
       {
         path: "myClasses",
-        element: <MyClasses></MyClasses>,
+        element: (
+          <InstructorRoute>
+            <MyClasses></MyClasses>
+          </InstructorRoute>
+        ),
       },
     ],
   },
