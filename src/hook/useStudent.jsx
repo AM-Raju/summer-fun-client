@@ -3,6 +3,7 @@ import useAuth from "./useAuth";
 
 const useStudent = () => {
   const { user } = useAuth();
+  const [student, setStudent] = useState(null);
   const [isStudent, setIsStudent] = useState(false);
   const [isStudentLoading, setIsStudentLoading] = useState(true);
 
@@ -12,13 +13,14 @@ const useStudent = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.role === "student") {
+          setStudent(data);
           setIsStudent(true);
           setIsStudentLoading(false);
         }
       })
       .catch((error) => console.log(error.message));
-  }, []);
-  return [isStudent, isStudentLoading];
+  }, [user]);
+  return [student, isStudent, isStudentLoading];
 };
 
 export default useStudent;

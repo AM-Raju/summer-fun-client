@@ -6,22 +6,22 @@ const useInstructor = () => {
 
   const [instructor, setInstructor] = useState(null);
   const [isInstructor, setIsInstructor] = useState(false);
-  const [instructorLoading, setInstructorLoading] = useState(true);
+  const [isInstructorLoading, setIsInstructorLoading] = useState(true);
 
   useEffect(() => {
-    setInstructorLoading(true);
+    setIsInstructorLoading(true);
     fetch(`http://localhost:5000/students/instructor/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.role === "instructor") {
           setInstructor(data);
           setIsInstructor(true);
-          setInstructorLoading(false);
+          setIsInstructorLoading(false);
         }
       })
       .catch((error) => console.log(error.message));
   }, [user]);
-  return [instructor, isInstructor, instructorLoading];
+  return [instructor, isInstructor, isInstructorLoading];
 };
 
 export default useInstructor;

@@ -6,8 +6,7 @@ import useAdmin from "../hook/useAdmin";
 
 const InstructorRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  const [isAdmin, isAdminLoading] = useAdmin();
-  const [instructor, instructorLoading] = useInstructor();
+  const [instructor, isInstructor, isInstructorLoading] = useInstructor();
   const location = useLocation();
 
   if (loading || instructorLoading) {

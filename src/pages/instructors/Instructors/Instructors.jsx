@@ -18,7 +18,7 @@ const Instructors = () => {
       <div className="grid grid-cols-4 gap-4">
         {/* Instructor block */}
         {instructors.map((instructor) => (
-          <div className="w-90 border border-[#1A58A3] p-5">
+          <div key={instructor?._id} className="w-90 border border-[#1A58A3] p-5">
             <div className="border-8 border-[#FCE07A] rounded-full w-52 mx-auto">
               <img className="w-52 mx-auto rounded-full" src={instructor?.image} alt="" />
             </div>

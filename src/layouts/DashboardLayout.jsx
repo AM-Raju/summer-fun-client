@@ -34,10 +34,10 @@ const DashboardLayout = () => {
 
       <div className="divider">Student</div>
       <li>
-        <Link to="/dashboard/addClass">Selected Classes</Link>
+        <Link to="/dashboard/selected">Selected Classes</Link>
       </li>
       <li>
-        <Link to="/dashboard/myClasses">Enrolled Classes</Link>
+        <Link to="/dashboard/enrolled">Enrolled Classes</Link>
       </li>
 
       {/* Main menu */}

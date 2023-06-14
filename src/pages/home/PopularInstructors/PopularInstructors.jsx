@@ -15,7 +15,7 @@ const PopularInstructors = () => {
       <div className="grid grid-cols-6 gap-5">
         {/* block */}
         {instructors.map((instructor) => (
-          <div className="border p-5 w-56  border-[#1A58A3] ">
+          <div key={instructor?._id} className="border p-5 w-56  border-[#1A58A3] ">
             <img src={instructor?.image} alt="" />
             <div className="relative w-52 mt-4">
               <h4 className="text-xl font-semibold">{instructor?.name}</h4>

@@ -3,6 +3,7 @@ import useAuth from "./useAuth";
 
 const useAdmin = () => {
   const { user } = useAuth();
+  const [admin, setAdmin] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isAdminLoading, setIsAdminLoading] = useState(true);
 
@@ -12,13 +13,14 @@ const useAdmin = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.role === "admin") {
+          setAdmin(data);
           setIsAdmin(true);
           setIsAdminLoading(false);
         }
       })
       .catch((error) => console.log(error.message));
   }, []);
-  return [isAdmin, isAdminLoading];
+  return [admin, isAdmin, isAdminLoading];
 };
 
 export default useAdmin;

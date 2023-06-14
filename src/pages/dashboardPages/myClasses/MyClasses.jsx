@@ -38,8 +38,7 @@ const MyClasses = () => {
               <th>Available Seats</th>
               <th>Enrolled Seats</th>
               <th>Status</th>
-              <th>Action</th>
-              <th>Action</th>
+              <th>Feedback</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -53,43 +52,13 @@ const MyClasses = () => {
                   </div>
                 </td>
                 <td>{game?.className}</td>
-
                 <td>${game?.price}</td>
                 <td>{game?.seats}</td>
                 <td>{game?.enrolled}</td>
                 <td>{game?.status}</td>
+                <td>Feedback here!</td>
                 <td>
-                  <button
-                    onClick={() => {
-                      handleApprove(game);
-                    }}
-                    className="px-5 py-3 bg-[#FCE07A] hover:bg-[#ebba08]"
-                  >
-                    Approve
-                  </button>
-                </td>
-                <td>
-                  <button
-                    onClick={() => {
-                      handleDeny(game);
-                    }}
-                    disabled={game?.status === "approved" ? true : false}
-                    className={`px-5 py-3 bg-[#FCE07A] hover:bg-[#ebba08] ${
-                      game?.status === "approved" ? "bg-gray-500 hover:bg-gray-500 text-white" : ""
-                    } `}
-                  >
-                    Deny
-                  </button>
-                </td>
-                <td>
-                  <button
-                    disabled={game?.status === "approved" ? true : false}
-                    className={`px-5 py-3 bg-[#FCE07A] hover:bg-[#ebba08] ${
-                      game?.status === "approved" ? "bg-gray-500 hover:bg-gray-500 text-white" : ""
-                    }`}
-                  >
-                    Feedback
-                  </button>
+                  <button className="px-5 py-3 bg-[#FCE07A] hover:bg-[#ebba08]">Update</button>
                 </td>
               </tr>
             ))}
