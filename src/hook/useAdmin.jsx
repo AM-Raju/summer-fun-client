@@ -19,7 +19,7 @@ const useAdmin = () => {
         }
       })
       .catch((error) => console.log(error.message));
-  }, []);
+  }, [user]);
   return [admin, isAdmin, isAdminLoading];
 };
 

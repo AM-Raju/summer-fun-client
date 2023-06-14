@@ -3,7 +3,7 @@ import useStudent from "../../../hook/useStudent";
 import Swal from "sweetalert2";
 
 const Classes = () => {
-  const [student] = useStudent();
+  const [student, isStudent] = useStudent();
   const [games, setGames] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/classes/approved")
@@ -43,6 +43,14 @@ const Classes = () => {
             showConfirmButton: false,
             timer: 1000,
           });
+        } else {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${data.message}`,
+            showConfirmButton: false,
+            timer: 1000,
+          });
         }
       });
   };
@@ -68,9 +76,12 @@ const Classes = () => {
                   onClick={() => {
                     handleSelectedClass(game);
                   }}
-                  className="bg-[#FCE07A] w-full py-3 mt-3 hover:bg-[#fcc708] text-lg font-semibold"
+                  className={`bg-[#FCE07A] w-full py-3 mt-3 hover:bg-[#fcc708] text-lg font-semibold ${
+                    !isStudent ? "hover:bg-gray-500 bg-gray-500" : ""
+                  }`}
+                  disabled={!isStudent ? true : false}
                 >
-                  Select class
+                  {isStudent ? "Select class" : "Only for Student"}
                 </button>
               </div>
             </div>

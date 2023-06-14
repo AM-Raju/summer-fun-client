@@ -63,7 +63,7 @@ const SignUp = () => {
             Swal.fire({
               icon: "success",
               title: "Sign Up and Profile Update Done!",
-              timer: 1500,
+              timer: 1000,
             });
           })
           .catch((error) => console.log(error.message));
